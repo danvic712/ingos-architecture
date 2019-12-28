@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7A553550-36D0-48D0-AB1C-43B836DDC5F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F706F382-5087-4D9F-B319-D722470A7A7A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.AutoMapper", "src\Ingos.AutoMapper\Ingos.AutoMapper.csproj", "{2E35CF32-749A-4975-A8F0-A2B3CFA2D625}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.MediatR", "src\Ingos.MediatR\Ingos.MediatR.csproj", "{B62948A8-0F87-4A26-9D01-B4FD41757219}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Swagger", "src\Ingos.Swagger\Ingos.Swagger.csproj", "{FFACE69D-9337-4F00-BE3C-715F991A2A88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ingos.AspNetCore.Api.Core", "src\Ingos.AspNetCore.Api.Core\Ingos.AspNetCore.Api.Core.csproj", "{3BAA1A38-5AC0-4395-8EC9-8EE90C6FF122}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E35CF32-749A-4975-A8F0-A2B3CFA2D625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E35CF32-749A-4975-A8F0-A2B3CFA2D625}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E35CF32-749A-4975-A8F0-A2B3CFA2D625}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E35CF32-749A-4975-A8F0-A2B3CFA2D625}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B62948A8-0F87-4A26-9D01-B4FD41757219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B62948A8-0F87-4A26-9D01-B4FD41757219}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B62948A8-0F87-4A26-9D01-B4FD41757219}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B62948A8-0F87-4A26-9D01-B4FD41757219}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFACE69D-9337-4F00-BE3C-715F991A2A88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFACE69D-9337-4F00-BE3C-715F991A2A88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFACE69D-9337-4F00-BE3C-715F991A2A88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFACE69D-9337-4F00-BE3C-715F991A2A88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BAA1A38-5AC0-4395-8EC9-8EE90C6FF122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BAA1A38-5AC0-4395-8EC9-8EE90C6FF122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BAA1A38-5AC0-4395-8EC9-8EE90C6FF122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BAA1A38-5AC0-4395-8EC9-8EE90C6FF122}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2E35CF32-749A-4975-A8F0-A2B3CFA2D625} = {7A553550-36D0-48D0-AB1C-43B836DDC5F1}
+		{B62948A8-0F87-4A26-9D01-B4FD41757219} = {7A553550-36D0-48D0-AB1C-43B836DDC5F1}
+		{FFACE69D-9337-4F00-BE3C-715F991A2A88} = {7A553550-36D0-48D0-AB1C-43B836DDC5F1}
+		{3BAA1A38-5AC0-4395-8EC9-8EE90C6FF122} = {7A553550-36D0-48D0-AB1C-43B836DDC5F1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF540E06-31DD-43CE-B4E5-8D2CAB223C5D}
+	EndGlobalSection
+EndGlobal
