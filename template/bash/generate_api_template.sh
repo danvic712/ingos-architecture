@@ -1,0 +1,1 @@
+dotnet new -i ../Ingos.Api.Template
