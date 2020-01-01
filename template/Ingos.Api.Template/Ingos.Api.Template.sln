@@ -7,29 +7,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4639E6A8-2BB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{024AFF13-8770-4A47-B5C0-706887A441EB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".template.config", ".template.config", "{299924F7-AE8F-4EFD-A103-7519A5A49B75}"
-	ProjectSection(SolutionItems) = preProject
-		.template.config\template.json = .template.config\template.json
-	EndProjectSection
-	ProjectSection(FolderGlobals) = preProject
-		E_5_4git_4ingos_4ingos-architecture_4template_4Ingos_1Api_1Template_4_1template_1config_4template_1json__JsonSchema = http://json.schemastore.org/template
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_Infrastructure", "01_Infrastructure", "{B305B914-085F-41ED-A2FC-A9C5ADA9C6BF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_Domain", "02_Domain", "{D8E2E694-6EF8-473B-98B6-358A1E284854}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_Application", "03_Application", "{5494DA42-E528-4C57-A5E9-7EBFA73F6BF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ingos.Api", "src\Ingos.Api\Ingos.Api.csproj", "{F63D1DEB-27A5-4D0A-A24E-0E2F4C7A1238}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Api", "src\Ingos.Api\Ingos.Api.csproj", "{F63D1DEB-27A5-4D0A-A24E-0E2F4C7A1238}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ingos.Application", "src\03_Application\Ingos.Application\Ingos.Application.csproj", "{EA8B5FB1-8BCD-41B3-8DC9-F56CC5418507}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Application", "src\03_Application\Ingos.Application\Ingos.Application.csproj", "{EA8B5FB1-8BCD-41B3-8DC9-F56CC5418507}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ingos.Domain", "src\02_Domain\Ingos.Domain\Ingos.Domain.csproj", "{B81C9AD0-842B-4A63-8DEE-7BBA6F5FDEE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Domain", "src\02_Domain\Ingos.Domain\Ingos.Domain.csproj", "{B81C9AD0-842B-4A63-8DEE-7BBA6F5FDEE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ingos.Infrastructure", "src\01_Infrastructure\Ingos.Infrastructure\Ingos.Infrastructure.csproj", "{6A37DADC-E266-43B6-B245-859C4C425CA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Infrastructure", "src\01_Infrastructure\Ingos.Infrastructure\Ingos.Infrastructure.csproj", "{6A37DADC-E266-43B6-B245-859C4C425CA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ingos.Application.Test", "test\Ingos.Application.Test\Ingos.Application.Test.csproj", "{957439FB-8CFD-4256-BD71-DF24A8D77626}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Application.Test", "test\Ingos.Application.Test\Ingos.Application.Test.csproj", "{957439FB-8CFD-4256-BD71-DF24A8D77626}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
