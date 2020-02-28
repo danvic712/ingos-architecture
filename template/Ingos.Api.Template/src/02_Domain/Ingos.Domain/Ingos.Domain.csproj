@@ -1,22 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\01_Infrastructure\Ingos.Infrastructure\Ingos.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\01_Infrastructure\Core\Ingos.Domain.Abstractions\Ingos.Domain.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="AggregateModels\" />
     <Folder Include="Events\" />
-    <Folder Include="Repositories\" />
     <Folder Include="Exceptions\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="MediatR" Version="7.0.0" />
   </ItemGroup>
 
 </Project>

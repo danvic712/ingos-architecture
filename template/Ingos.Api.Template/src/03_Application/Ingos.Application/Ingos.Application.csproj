@@ -1,15 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>Ingos.Application.xml</DocumentationFile>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\01_Infrastructure\Ingos.Infrastructure\Ingos.Infrastructure.csproj" />
     <ProjectReference Include="..\..\02_Domain\Ingos.Domain\Ingos.Domain.csproj" />
   </ItemGroup>
 
@@ -17,18 +12,9 @@
     <Folder Include="Behaviors\" />
     <Folder Include="Commands\" />
     <Folder Include="DomainEventHandlers\" />
-    <Folder Include="Dtos\" />
+    <Folder Include="IntegrationEvents\" />
+    <Folder Include="Queries\" />
     <Folder Include="Validations\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="MediatR" Version="7.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Ingos.Application.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
