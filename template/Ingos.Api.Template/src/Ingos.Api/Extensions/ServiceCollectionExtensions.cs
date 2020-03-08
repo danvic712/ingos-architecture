@@ -7,9 +7,12 @@
 // Modified by:
 // Description: Services container injection extension method
 //-----------------------------------------------------------------------
+using Ingos.Api.Core.Swagger.DependencyInjection;
 using Ingos.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +23,43 @@ namespace Ingos.Api.Extensions
     public static class ServiceCollectionExtensions
     {
         // Add your method here which injection service into services container
+
+        #region Api Services
+
+        /// <summary>
+        /// Add application support for api version
+        /// </summary>
+        /// <param name="services">Services container</param>
+        /// <returns> </returns>
+        public static IServiceCollection AddApplicationApiVersion(this IServiceCollection services)
+        {
+            // Add api version support
+            services.AddApiVersioning(o =>
+            {
+                // return api version info in response header
+                o.ReportApiVersions = true;
+
+                // default api version
+                o.DefaultApiVersion = new ApiVersion(1, 0);
+
+                // when not specifying an api version, select the default version
+                o.AssumeDefaultVersionWhenUnspecified = true;
+            });
+
+            // Config api version info
+            services.AddVersionedApiExplorer(option =>
+            {
+                // Set api version group name format
+                option.GroupNameFormat = "'v'VVV";
+
+                // when not specifying an api version, select the default version
+                option.AssumeDefaultVersionWhenUnspecified = true;
+            });
+
+            return services;
+        }
+
+        #endregion Api Services
 
         #region Database Services
 
@@ -62,6 +102,35 @@ namespace Ingos.Api.Extensions
         }
 
         #endregion Repository Services
+
+        #region Swagger Services
+
+        /// <summary>
+        /// Add application support for swagger doc
+        /// </summary>
+        /// <param name="services">Services container</param>
+        /// <returns> </returns>
+        public static IServiceCollection AddApplicationSwagger(this IServiceCollection services)
+        {
+            services.AddIngosApplicationSwagger(options =>
+            {
+                options.Name = "Danvic Wang";
+                options.Email = "danvic96@hotmail.com";
+                options.Url = new Uri("https://yuiter.com");
+                options.Description = "Ingos.API Template - A asp.net core back-end web api template.";
+                options.Title = "Ingos.API Template";
+                options.License = new OpenApiLicense
+                {
+                    Name = "MIT",
+                    Url = new Uri("https://opensource.org/licenses/MIT")
+                };
+                options.Paths = new List<string> { "Ingos.Api.xml" };
+            });
+
+            return services;
+        }
+
+        #endregion Swagger Services
 
         #region Health check Services
 

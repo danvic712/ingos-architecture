@@ -24,7 +24,7 @@ namespace Ingos.Infrastructure.Core.AutoMapper.DependencyInjection
         /// <param name="services">The services that need to be injected into the container <see cref="IServiceCollection"/></param>
         /// <param name="setupAction">The instance of Ingos AutoMapper config options</param>
         /// <returns></returns>
-        public static IServiceCollection AddIngosAutoMapperProfiles(this IServiceCollection services,
+        public static IServiceCollection AddIngosApplicationAutoMapper(this IServiceCollection services,
             Action<IngosAutoMapperConfigurationOptions> setupAction)
         {
             if (setupAction == null)

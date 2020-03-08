@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ingos.Api.Controllers.v1
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
     [ApiController]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class ValuesController : ControllerBase
     {
         // GET: api/Values
