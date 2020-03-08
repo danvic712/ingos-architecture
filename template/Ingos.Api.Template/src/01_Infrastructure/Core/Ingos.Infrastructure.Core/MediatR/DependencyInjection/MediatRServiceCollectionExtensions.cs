@@ -24,14 +24,14 @@ namespace Ingos.Infrastructure.Core.MediatR.DependencyInjection
         /// <param name="services">The instance of <see cref="IServiceCollection"/></param>
         /// <returns></returns>
         public static IServiceCollection AddIngosApplicationMediatR(this IServiceCollection services,
-            Action<IngosMediatRDescriptionOptions> setupAction)
+            Action<IngosMediatRConfigurationOptions> setupAction)
         {
             if (setupAction == null)
                 throw new ArgumentNullException(nameof(setupAction));
 
             // Get mediatr config options
             //
-            var options = new IngosMediatRDescriptionOptions();
+            var options = new IngosMediatRConfigurationOptions();
             setupAction?.Invoke(options);
 
             return AddMediatRService(services, options);
@@ -43,7 +43,7 @@ namespace Ingos.Infrastructure.Core.MediatR.DependencyInjection
         /// <param name="services">The collection of services</param>
         /// <param name="options">The mediatr config options</param>
         /// <returns></returns>
-        public static IServiceCollection AddMediatRService(IServiceCollection services, IngosMediatRDescriptionOptions options)
+        public static IServiceCollection AddMediatRService(IServiceCollection services, IngosMediatRConfigurationOptions options)
         {
             // Get Startup's type
             var mediators = new List<Type> { options.StartupClassType };
