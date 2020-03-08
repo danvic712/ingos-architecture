@@ -8,11 +8,11 @@
 // Description: Generic base repository interface
 //-----------------------------------------------------------------------
 using Ingos.Domain.Abstractions;
-using Ingos.Domain.Abstractions.Interfaces;
+using Ingos.Domain.Abstractions.Contracts;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Ingos.Infrastructure.Core.EntityFrameworkCore.Interfaces
+namespace Ingos.Infrastructure.Core.EntityFrameworkCore.Contracts
 {
     public interface IRepository<TEntity, TPrimaryKey> where TEntity : EntityBase<TPrimaryKey>, IAggregateRoot
     {

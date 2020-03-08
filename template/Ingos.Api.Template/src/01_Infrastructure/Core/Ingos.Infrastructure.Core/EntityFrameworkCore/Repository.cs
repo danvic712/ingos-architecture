@@ -8,8 +8,8 @@
 // Description: Generic base repository interface implementation abstract class
 //-----------------------------------------------------------------------
 using Ingos.Domain.Abstractions;
-using Ingos.Domain.Abstractions.Interfaces;
-using Ingos.Infrastructure.Core.EntityFrameworkCore.Interfaces;
+using Ingos.Domain.Abstractions.Contracts;
+using Ingos.Infrastructure.Core.EntityFrameworkCore.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;

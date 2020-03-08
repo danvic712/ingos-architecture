@@ -7,7 +7,8 @@
 // Modified by:
 // Description: Ingos base database context object
 //-----------------------------------------------------------------------
-using Ingos.Infrastructure.Core.EntityFrameworkCore.Interfaces;
+using Ingos.Infrastructure.Core.EntityFrameworkCore.Contracts;
+using Ingos.Infrastructure.Core.MediatR.Extensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;

@@ -8,7 +8,7 @@
 // Description: The aggregate root entity's base interface
 //-----------------------------------------------------------------------
 
-namespace Ingos.Domain.Abstractions.Interfaces
+namespace Ingos.Domain.Abstractions.Contracts
 {
     public interface IAggregateRoot
     { }

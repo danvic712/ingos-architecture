@@ -10,7 +10,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Ingos.Infrastructure.Core.EntityFrameworkCore.Interfaces
+namespace Ingos.Infrastructure.Core.EntityFrameworkCore.Contracts
 {
     public interface IUnitOfWork
     {

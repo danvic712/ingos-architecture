@@ -18,9 +18,10 @@ namespace Ingos.Infrastructure.Core.MediatR.Extensions
     public static class IngosMediatorExtension
     {
         /// <summary>
+        /// Dispatch domain events
         /// </summary>
-        /// <param name="mediator"> </param>
-        /// <param name="context"> </param>
+        /// <param name="mediator"></param>
+        /// <param name="context"></param>
         /// <returns> </returns>
         public static async Task DispatchDomainEventsAsync(this IMediator mediator, IngosApplicationBaseContext context)
         {
