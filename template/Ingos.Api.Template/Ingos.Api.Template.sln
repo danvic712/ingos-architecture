@@ -25,11 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Application", "src\03
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Api", "src\Ingos.Api\Ingos.Api.csproj", "{CE8E0D06-5DFA-46F6-B1F5-20C6EA26572A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Api.Core", "src\01_Infrastructure\Shared\Ingos.AspNetCore.Api.Core\Ingos.Api.Core.csproj", "{ACC73168-D8DA-490E-A498-0734EE25B405}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Domain.Abstractions", "src\01_Infrastructure\Shared\Ingos.Domain.Abstractions\Ingos.Domain.Abstractions.csproj", "{B0026472-E6A8-4E30-95FE-833C87C7C44A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Infrastructure.Core", "src\01_Infrastructure\Shared\Ingos.Infrastructure.Core\Ingos.Infrastructure.Core.csproj", "{C938B75B-0E19-4954-891C-116697140CBD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Api.Core", "src\01_Infrastructure\Shared\Ingos.Api.Core\Ingos.Api.Core.csproj", "{3480AAB7-BEA3-4953-8F1F-19179AD6CE59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,10 +57,6 @@ Global
 		{CE8E0D06-5DFA-46F6-B1F5-20C6EA26572A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE8E0D06-5DFA-46F6-B1F5-20C6EA26572A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE8E0D06-5DFA-46F6-B1F5-20C6EA26572A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ACC73168-D8DA-490E-A498-0734EE25B405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ACC73168-D8DA-490E-A498-0734EE25B405}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ACC73168-D8DA-490E-A498-0734EE25B405}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ACC73168-D8DA-490E-A498-0734EE25B405}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B0026472-E6A8-4E30-95FE-833C87C7C44A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B0026472-E6A8-4E30-95FE-833C87C7C44A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0026472-E6A8-4E30-95FE-833C87C7C44A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,6 +65,10 @@ Global
 		{C938B75B-0E19-4954-891C-116697140CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C938B75B-0E19-4954-891C-116697140CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C938B75B-0E19-4954-891C-116697140CBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3480AAB7-BEA3-4953-8F1F-19179AD6CE59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3480AAB7-BEA3-4953-8F1F-19179AD6CE59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3480AAB7-BEA3-4953-8F1F-19179AD6CE59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3480AAB7-BEA3-4953-8F1F-19179AD6CE59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,9 +83,9 @@ Global
 		{B0EC7B43-86FB-4DAD-84CF-7CADC0352B09} = {D8E2E694-6EF8-473B-98B6-358A1E284854}
 		{FF379876-520F-4797-87E3-CA1F6ADED9AC} = {5494DA42-E528-4C57-A5E9-7EBFA73F6BF8}
 		{CE8E0D06-5DFA-46F6-B1F5-20C6EA26572A} = {4639E6A8-2BB9-4459-BA52-027B15BCF18A}
-		{ACC73168-D8DA-490E-A498-0734EE25B405} = {B79B91F9-265C-4F83-8DB7-60EDFDF97BBC}
 		{B0026472-E6A8-4E30-95FE-833C87C7C44A} = {B79B91F9-265C-4F83-8DB7-60EDFDF97BBC}
 		{C938B75B-0E19-4954-891C-116697140CBD} = {B79B91F9-265C-4F83-8DB7-60EDFDF97BBC}
+		{3480AAB7-BEA3-4953-8F1F-19179AD6CE59} = {B79B91F9-265C-4F83-8DB7-60EDFDF97BBC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C121FB72-9781-4D0D-BBFB-7E1535F9744D}

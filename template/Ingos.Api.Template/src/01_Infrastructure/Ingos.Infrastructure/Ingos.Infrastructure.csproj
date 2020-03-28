@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\02_Domain\Ingos.Domain\Ingos.Domain.csproj" />
-    <ProjectReference Include="..\Core\Ingos.Infrastructure.Core\Ingos.Infrastructure.Core.csproj" />
     <ProjectReference Include="..\Shared\Ingos.Infrastructure.Core\Ingos.Infrastructure.Core.csproj" />
   </ItemGroup>
 

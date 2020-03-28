@@ -5,13 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\01_Infrastructure\Core\Ingos.Domain.Abstractions\Ingos.Domain.Abstractions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="AggregateModels\" />
     <Folder Include="Events\" />
     <Folder Include="Exceptions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\01_Infrastructure\Shared\Ingos.Domain.Abstractions\Ingos.Domain.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>
