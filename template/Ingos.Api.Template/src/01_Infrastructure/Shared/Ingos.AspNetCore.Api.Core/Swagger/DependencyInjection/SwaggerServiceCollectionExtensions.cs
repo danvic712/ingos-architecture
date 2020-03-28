@@ -23,16 +23,16 @@ namespace Ingos.Api.Core.Swagger.DependencyInjection
         /// Inject Swagger into IServiceCollection
         /// </summary>
         /// <param name="services">The services that need to be injected into the container <see cref="IServiceCollection"/></param>
-        /// <param name="setupAction">The instance of Ingos Swagger config options <see cref="IngosConfigurationOptions"/></param>
+        /// <param name="setupAction">The instance of Ingos Swagger config options <see cref="IngosSwaggerConfigurationOptions"/></param>
         public static IServiceCollection AddIngosApplicationSwagger(this IServiceCollection services,
-            Action<IngosConfigurationOptions> setupAction)
+            Action<IngosSwaggerConfigurationOptions> setupAction)
         {
             if (setupAction == null)
                 throw new ArgumentNullException(nameof(setupAction));
 
             // Get swagger config options
             //
-            var options = new IngosConfigurationOptions();
+            var options = new IngosSwaggerConfigurationOptions();
             setupAction?.Invoke(options);
 
             return AddSwaggerService(services, options);
@@ -44,7 +44,7 @@ namespace Ingos.Api.Core.Swagger.DependencyInjection
         /// <param name="services">The collection of services</param>
         /// <param name="options">The swagger config options</param>
         /// <returns></returns>
-        private static IServiceCollection AddSwaggerService(IServiceCollection services, IngosConfigurationOptions options)
+        private static IServiceCollection AddSwaggerService(IServiceCollection services, IngosSwaggerConfigurationOptions options)
         {
             // Config swagger doc info
             services.AddSwaggerGen(s =>

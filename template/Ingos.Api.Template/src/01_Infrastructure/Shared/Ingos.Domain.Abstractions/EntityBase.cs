@@ -7,7 +7,7 @@
 // Modified by:
 // Description: Generic base domain object class
 //-----------------------------------------------------------------------
-using MediatR;
+using Ingos.Domain.Abstractions.Contracts;
 using System.Collections.Generic;
 
 namespace Ingos.Domain.Abstractions
@@ -15,7 +15,7 @@ namespace Ingos.Domain.Abstractions
     /// <summary>
     /// Abstract domain object base class
     /// </summary>
-    /// <typeparam name="TPrimaryKey"> Primary key </typeparam>
+    /// <typeparam name="TPrimaryKey">Primary key</typeparam>
     public abstract class EntityBase<TPrimaryKey>
     {
         #region Domain Attributes
@@ -30,22 +30,23 @@ namespace Ingos.Domain.Abstractions
         #region Domain Events
 
         /// <summary>
+        /// Get domain events
         /// </summary>
-        private List<INotification> _domainEvents;
+        private List<IDomainEvent> _domainEvents;
 
         /// <summary>
         /// Domain events collection
         /// </summary>
-        public IReadOnlyCollection<INotification> DomainEvents => _domainEvents?.AsReadOnly();
+        public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents?.AsReadOnly();
 
         /// <summary>
         /// Add domain event
         /// </summary>
-        /// <param name="notification"> </param>
-        public void AddDomainEvent(INotification notification)
+        /// <param name="domainEvent">Domain event</param>
+        public void AddDomainEvent(IDomainEvent domainEvent)
         {
-            _domainEvents = _domainEvents ?? new List<INotification>();
-            _domainEvents.Add(notification);
+            _domainEvents = _domainEvents ?? new List<IDomainEvent>();
+            _domainEvents.Add(domainEvent);
         }
 
         /// <summary>
@@ -56,8 +57,8 @@ namespace Ingos.Domain.Abstractions
         /// <summary>
         /// Remove domain event
         /// </summary>
-        /// <param name="notification"> </param>
-        public void RemoveDomainEvents(INotification notification) => _domainEvents?.Remove(notification);
+        /// <param name="domainEvent">Domain events that need to be removed</param>
+        public void RemoveDomainEvents(IDomainEvent domainEvent) => _domainEvents?.Remove(domainEvent);
 
         #endregion Domain Events
 
@@ -66,9 +67,9 @@ namespace Ingos.Domain.Abstractions
         /// <summary>
         /// Determine the two classes are not equal
         /// </summary>
-        /// <param name="a"> class a </param>
-        /// <param name="b"> class b </param>
-        /// <returns> </returns>
+        /// <param name="a">Class a</param>
+        /// <param name="b">Class b</param>
+        /// <returns></returns>
         public static bool operator !=(EntityBase<TPrimaryKey> a, EntityBase<TPrimaryKey> b)
         {
             return !(a == b);
@@ -77,9 +78,9 @@ namespace Ingos.Domain.Abstractions
         /// <summary>
         /// Determine the two classes are equal
         /// </summary>
-        /// <param name="a"> class a </param>
-        /// <param name="b"> class b </param>
-        /// <returns> </returns>
+        /// <param name="a">Class a</param>
+        /// <param name="b">Class b</param>
+        /// <returns></returns>
         public static bool operator ==(EntityBase<TPrimaryKey> a, EntityBase<TPrimaryKey> b)
         {
             if (a is null && b is null)
@@ -94,8 +95,8 @@ namespace Ingos.Domain.Abstractions
         /// <summary>
         /// Determines whether the specified object is equal to the current object
         /// </summary>
-        /// <param name="obj"> The object to compare with the current object </param>
-        /// <returns> </returns>
+        /// <param name="obj">The object to compare with the current object</param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             // Check whether the obj is null
@@ -113,7 +114,7 @@ namespace Ingos.Domain.Abstractions
         /// <summary>
         /// Get the obj's hash code
         /// </summary>
-        /// <returns> </returns>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return 2108858624 + EqualityComparer<TPrimaryKey>.Default.GetHashCode(Id);
@@ -122,7 +123,7 @@ namespace Ingos.Domain.Abstractions
         /// <summary>
         /// Rewrite the tostring method to return the obj info
         /// </summary>
-        /// <returns> </returns>
+        /// <returns></returns>
         public override string ToString()
         {
             return GetType().Name + " [Id=" + Id + "]";

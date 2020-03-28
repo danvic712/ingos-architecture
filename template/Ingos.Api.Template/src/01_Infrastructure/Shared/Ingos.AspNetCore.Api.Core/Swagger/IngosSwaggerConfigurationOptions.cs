@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "IngosConfigurationOptions.cs">
+// <copyright file= "IngosSwaggerConfigurationOptions.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace Ingos.Api.Core.Swagger
 {
-    public class IngosConfigurationOptions
+    public class IngosSwaggerConfigurationOptions
     {
         #region Attributes
 

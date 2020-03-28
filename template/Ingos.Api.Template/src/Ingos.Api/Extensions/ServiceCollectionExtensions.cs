@@ -9,14 +9,14 @@
 //-----------------------------------------------------------------------
 using Ingos.Api.Core.Swagger.DependencyInjection;
 using Ingos.Infrastructure;
+using Ingos.Infrastructure.Core.EntityFrameworkCore;
+using Ingos.Infrastructure.Core.EntityFrameworkCore.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Ingos.Api.Extensions
 {
@@ -98,6 +98,7 @@ namespace Ingos.Api.Extensions
         /// <param name="services"> Services container </param>
         public static IServiceCollection AddApplicationRepositories(this IServiceCollection services)
         {
+            services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
             return services;
         }
 
