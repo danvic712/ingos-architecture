@@ -2,6 +2,28 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>Danvic Wang</Authors>
+    <Product />
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageProjectUrl></PackageProjectUrl>
+    <Copyright>Copyright (c) 2020 Danvic Wang</Copyright>
+    <PackageTags>domain-driven-design</PackageTags>
+    <RepositoryUrl>https://github.com/Lanesra712/ingos-architecture</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>Abstractions for domain driven design</Description>
+    <Company />
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageLicenseFile></PackageLicenseFile>
+    <NeutralLanguage></NeutralLanguage>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="license.txt" />
+    <None Remove="license.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="8.0.1" />
+  </ItemGroup>
 
 </Project>
