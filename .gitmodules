@@ -1,0 +1,3 @@
+[submodule "template/ingos-api-template"]
+	path = template/ingos-api-template
+	url = https://github.com/Lanesra712/ingos-api-template.git
