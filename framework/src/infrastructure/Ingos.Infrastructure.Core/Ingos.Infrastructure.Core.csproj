@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>Danvic Wang</Authors>
+    <Company>Danvic Wang</Company>
+    <Copyright>Copyright (c) 2020 Danvic Wang</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/Lanesra712/ingos-architecture</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>infrastructure,utils</PackageTags>
+  </PropertyGroup>
+
+</Project>
