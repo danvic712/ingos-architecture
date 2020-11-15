@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Danvic Wang</Authors>
     <Product />
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl></PackageProjectUrl>
     <Copyright>Copyright (c) 2020 Danvic Wang</Copyright>
     <PackageTags>domain-driven-design</PackageTags>

@@ -1,19 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Danvic Wang</Authors>
     <Company>Danvic Wang</Company>
+    <Version>0.1.0</Version>
     <Copyright>Copyright (c) 2020 Danvic Wang</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/Lanesra712/ingos-architecture</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>infrastructure,utils</PackageTags>
+    <PackageTags>entity-framework-core,repository</PackageTags>
+    <RepositoryUrl>https://github.com/Lanesra712/ingos-architecture</RepositoryUrl>
+    <Description>Extend EF Core to implement repository mode and unit work mode</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />
   </ItemGroup>
-
 </Project>
