@@ -16,7 +16,7 @@ namespace Ingos.Infrastructure.Core.ServiceLifetimes
     public class ApplicationServiceOptions
     {
         /// <summary>
-        /// The assembly which contains services
+        ///     The assembly which contains services
         /// </summary>
         public IEnumerable<Assembly> Assembly { get; set; }
     }

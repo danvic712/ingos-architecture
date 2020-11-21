@@ -1,23 +1,24 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "ServiceLifetimeException.cs">
+// <copyright file= "BusinessLogicException.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2020/5/16 10:32:36
+// Created DateTime: 2020/11/21 21:08:19
 // Modified by:
-// Description: Service inject exception
+// Description: System business logic error
 //-----------------------------------------------------------------------
 
 using System;
 
-namespace Ingos.Infrastructure.Core.ServiceLifetimes.Exceptions
+namespace Ingos.Infrastructure.Core.Exceptions
 {
-    public class ServiceLifetimeException : Exception
+    [Serializable]
+    public class BusinessLogicException : ApplicationException
     {
         /// <summary>
         ///     ctor
         /// </summary>
-        public ServiceLifetimeException()
+        public BusinessLogicException()
         {
         }
 
@@ -25,7 +26,7 @@ namespace Ingos.Infrastructure.Core.ServiceLifetimes.Exceptions
         ///     ctor
         /// </summary>
         /// <param name="message">Error message</param>
-        public ServiceLifetimeException(string message) : base(message)
+        public BusinessLogicException(string message) : base(message)
         {
         }
 
@@ -33,8 +34,8 @@ namespace Ingos.Infrastructure.Core.ServiceLifetimes.Exceptions
         ///     ctor
         /// </summary>
         /// <param name="message">Error message</param>
-        /// <param name="inner">Inner exception</param>
-        public ServiceLifetimeException(string message, Exception inner) : base(message, inner)
+        /// <param name="exception">Internal error</param>
+        public BusinessLogicException(string message, Exception exception) : base(message, exception)
         {
         }
     }

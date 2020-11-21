@@ -1,16 +1,20 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "ISingleton.cs">
+// <copyright file= "ServiceCollectionExtensions.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2020/5/2 10:55:16
+// Created DateTime: 2020/11/21 22:25:15
 // Modified by:
-// Description: Adopt singleton lifetime's service
+// Description: 
 //-----------------------------------------------------------------------
 
-namespace Ingos.Infrastructure.Core.ServiceLifetimes.Contracts
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Ingos.AspNetCore.Core.Extensions
 {
-    public interface ISingleton
+    public class ServiceCollectionExtensions
     {
     }
 }

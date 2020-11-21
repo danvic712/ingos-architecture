@@ -10,16 +10,18 @@
 
 using System;
 using System.Linq;
+using Ingos.Infrastructure.Core.ServiceLifetimes;
 using Ingos.Infrastructure.Core.ServiceLifetimes.Contracts;
 using Ingos.Infrastructure.Core.ServiceLifetimes.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Ingos.Infrastructure.Core.ServiceLifetimes.DependencyInjection
+// ReSharper disable once CheckNamespace
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceLifetimeServiceCollectionExtensions
     {
         /// <summary>
-        /// Dependency inject custom service
+        ///     Dependency inject custom service
         /// </summary>
         /// <param name="services">The instance of <see cref="IServiceCollection" /></param>
         /// <param name="setupAction">The inject service's config options</param>
@@ -37,7 +39,7 @@ namespace Ingos.Infrastructure.Core.ServiceLifetimes.DependencyInjection
         }
 
         /// <summary>
-        /// Core method of inject service
+        ///     Core method of inject service
         /// </summary>
         /// <param name="services">The services collection</param>
         /// <param name="options">The inject service's config options</param>
@@ -56,7 +58,6 @@ namespace Ingos.Infrastructure.Core.ServiceLifetimes.DependencyInjection
             var singleton = typeof(ISingleton);
 
             foreach (var assembly in options.Assembly)
-            {
                 foreach (var implement in assembly.GetTypes())
                 {
                     var interfaceType = implement.GetInterfaces();
@@ -68,7 +69,6 @@ namespace Ingos.Infrastructure.Core.ServiceLifetimes.DependencyInjection
                         throw new ServiceLifetimeException($"Did not find this {nameof(implement)}'s lifetime");
 
                     foreach (var service in interfaceType)
-                    {
                         switch (lifetime.Name)
                         {
                             case "ITransient":
@@ -83,9 +83,7 @@ namespace Ingos.Infrastructure.Core.ServiceLifetimes.DependencyInjection
                                 services.AddSingleton(service, implement);
                                 break;
                         }
-                    }
                 }
-            }
 
             return services;
         }

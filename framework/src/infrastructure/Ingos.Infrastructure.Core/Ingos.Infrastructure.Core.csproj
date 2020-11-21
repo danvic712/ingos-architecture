@@ -10,6 +10,8 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>infrastructure,utils</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.0.1</Version>
+    <Description>Utils for ingos</Description>
   </PropertyGroup>
 
   <ItemGroup>

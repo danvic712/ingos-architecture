@@ -11,5 +11,6 @@
 namespace Ingos.Infrastructure.Core.ServiceLifetimes.Contracts
 {
     public interface ITransient
-    { }
+    {
+    }
 }
