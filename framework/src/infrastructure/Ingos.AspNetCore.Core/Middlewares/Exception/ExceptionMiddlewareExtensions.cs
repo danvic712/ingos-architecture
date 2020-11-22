@@ -5,12 +5,12 @@
 // Author: Danvic.Wang
 // Created DateTime: 2020/7/6 20:23:51
 // Modified by:
-// Description: Ingos's global exception middleware
+// Description: Exception middleware extension method
 //-----------------------------------------------------------------------
 
 using Microsoft.AspNetCore.Builder;
 
-namespace Ingos.AspNetCore.Core.Middlewares.Exceptions
+namespace Ingos.AspNetCore.Core.Middlewares.Exception
 {
     /// <summary>
     ///     Exception middleware extension method
@@ -22,7 +22,7 @@ namespace Ingos.AspNetCore.Core.Middlewares.Exceptions
         /// </summary>
         /// <param name="builder">request pipeline.<see cref="IApplicationBuilder" /></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseGlobalException(this IApplicationBuilder builder)
+        public static IApplicationBuilder UseExceptionHandler(this IApplicationBuilder builder)
         {
             return builder.UseMiddleware<ExceptionMiddleware>();
         }

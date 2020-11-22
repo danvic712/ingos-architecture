@@ -12,19 +12,18 @@ using System.Collections.Generic;
 
 namespace Ingos.AspNetCore.Core.Responses
 {
-    public class ApiPaginationResponse<T> where T : class
+    public class ApiPaginationResponse<T> : ApiResponse<PaginationResource<T>>
+    {
+    }
+
+    public class PaginationResource<T>
     {
         #region Properties
 
         /// <summary>
-        ///     Request trace id
+        ///     Total data
         /// </summary>
-        public string TraceId { get; set; }
-
-        /// <summary>
-        ///     Request status
-        /// </summary>
-        public bool Status { get; set; }
+        public int Total { get; set; }
 
         /// <summary>
         ///     Current page
@@ -37,19 +36,9 @@ namespace Ingos.AspNetCore.Core.Responses
         public int Next { get; set; }
 
         /// <summary>
-        ///     Total data
+        ///     Paging data
         /// </summary>
-        public int Count { get; set; }
-
-        /// <summary>
-        ///     Response data
-        /// </summary>
-        public IList<T> Data { get; set; }
-
-        /// <summary>
-        ///     Error information
-        /// </summary>
-        public IList<ApiResponseErrorMessage> Error { get; set; }
+        public IList<T> Data { get; set; } = new List<T>();
 
         #endregion Properties
     }

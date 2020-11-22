@@ -15,9 +15,9 @@ namespace Ingos.AspNetCore.Core.Responses
         #region Properties
 
         /// <summary>
-        ///     Error Code
+        ///     Error Title
         /// </summary>
-        public string ErrorCode { get; set; }
+        public string Title { get; set; }
 
         /// <summary>
         ///     Detailed error message

@@ -1,20 +1,16 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "ServiceCollectionExtensions.cs">
+// <copyright file= "IngosServicesOptions.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
-// Created DateTime: 2020/11/21 22:25:15
+// Created DateTime: 2020/11/22 11:06:04
 // Modified by:
-// Description: 
+// Description: Ingos default service config options
 //-----------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ingos.AspNetCore.Core.Extensions
+namespace Ingos.AspNetCore.Core.DependencyInjection
 {
-    public class ServiceCollectionExtensions
+    public class IngosServicesOptions
     {
     }
 }

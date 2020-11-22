@@ -29,12 +29,12 @@ namespace Ingos.AspNetCore.Core.Responses
         /// <summary>
         ///     Response data
         /// </summary>
-        public T Data { get; set; }
+        public T Resource { get; set; } = default;
 
         /// <summary>
         ///     Error information
         /// </summary>
-        public IList<ApiResponseErrorMessage> Error { get; set; }
+        public IList<ApiResponseErrorMessage> Error { get; set; } = new List<ApiResponseErrorMessage>();
 
         #endregion Properties
     }

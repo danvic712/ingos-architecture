@@ -1,4 +1,14 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file= "ExceptionMiddleware.cs">
+//     Copyright (c) Danvic.Wang All rights reserved.
+// </copyright>
+// Author: Danvic.Wang
+// Created DateTime: 2020/11/21 22:34:49
+// Modified by:
+// Description: Exception handle middleware
+//-----------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -7,10 +17,10 @@ using Ingos.Infrastructure.Core.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace Ingos.AspNetCore.Core.Middlewares.Exceptions
+namespace Ingos.AspNetCore.Core.Middlewares.Exception
 {
     /// <summary>
-    ///     Exception middleware handle
+    ///     Exception handle middleware
     /// </summary>
     public class ExceptionMiddleware
     {
@@ -52,7 +62,7 @@ namespace Ingos.AspNetCore.Core.Middlewares.Exceptions
             {
                 await _request(context);
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 await HandleExceptionAsync(context, ex);
             }
@@ -64,7 +74,7 @@ namespace Ingos.AspNetCore.Core.Middlewares.Exceptions
         /// <param name="httpContext">Http context</param>
         /// <param name="exception">Error message</param>
         /// <returns></returns>
-        private async Task HandleExceptionAsync(HttpContext httpContext, Exception exception)
+        private async Task HandleExceptionAsync(HttpContext httpContext, System.Exception exception)
         {
             httpContext.Response.ContentType = "application/json";
 
@@ -84,8 +94,7 @@ namespace Ingos.AspNetCore.Core.Middlewares.Exceptions
                 {
                     new ApiResponseErrorMessage
                     {
-                        // Todo：not implement this define
-                        ErrorCode = "",
+                        Title = "Request has an unhandled exception",
                         Message = exception.InnerException == null
                             ? exception.Message
                             : exception.InnerException.Message
