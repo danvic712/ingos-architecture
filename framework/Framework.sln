@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{69D35E07-0CF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A2A5F097-F237-4327-BB9D-1573A6C56C0E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Tests", "test\Framework.Tests\Framework.Tests.csproj", "{2FC3C6A7-1E97-4127-8969-BA4C7DEE48C0}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "domain-driven-design", "domain-driven-design", "{CFF3F57F-2C74-4E80-9C01-A2546717EF56}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Domain.Abstractions", "src\domain-driven-design\Ingos.Domain.Abstractions\Ingos.Domain.Abstractions.csproj", "{CD659C35-9970-41D4-8308-0D47684F0579}"
@@ -21,7 +19,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Infrastructure.Core",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.EntityFrameworkCore.Repository", "src\infrastructure\Ingos.EntityFrameworkCore.Repository\Ingos.EntityFrameworkCore.Repository.csproj", "{F2D90FC4-2ED4-4E7F-A0E6-CC33EC7E1250}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ingos.AspNetCore.Core", "src\infrastructure\Ingos.AspNetCore.Core\Ingos.AspNetCore.Core.csproj", "{1A9E6152-4478-4732-BD91-9D02A036DE39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.AspNetCore.Core", "src\infrastructure\Ingos.AspNetCore.Core\Ingos.AspNetCore.Core.csproj", "{1A9E6152-4478-4732-BD91-9D02A036DE39}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingos.Infrastructure.Core.Tests", "test\infrastructure\Ingos.Infrastructure.Core.Tests\Ingos.Infrastructure.Core.Tests.csproj", "{80E3745B-ED11-4E8E-B8A1-20F0F1A02BF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{39738F07-C6B8-4D40-831B-0A3481808D94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ingos.AspNetCore.Core.Tests", "test\infrastructure\Ingos.AspNetCore.Core.Tests\Ingos.AspNetCore.Core.Tests.csproj", "{1CC0CDC8-6D4D-4D6B-807E-DC7DBD0E599F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ingos.EntityFrameworkCore.Repository.Tests", "test\infrastructure\Ingos.EntityFrameworkCore.Repository.Tests\Ingos.EntityFrameworkCore.Repository.Tests.csproj", "{9314DC31-6063-4FE3-A5F3-431F9D35C215}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +35,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2FC3C6A7-1E97-4127-8969-BA4C7DEE48C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2FC3C6A7-1E97-4127-8969-BA4C7DEE48C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2FC3C6A7-1E97-4127-8969-BA4C7DEE48C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2FC3C6A7-1E97-4127-8969-BA4C7DEE48C0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CD659C35-9970-41D4-8308-0D47684F0579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CD659C35-9970-41D4-8308-0D47684F0579}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD659C35-9970-41D4-8308-0D47684F0579}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,12 +55,23 @@ Global
 		{1A9E6152-4478-4732-BD91-9D02A036DE39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A9E6152-4478-4732-BD91-9D02A036DE39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A9E6152-4478-4732-BD91-9D02A036DE39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E3745B-ED11-4E8E-B8A1-20F0F1A02BF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E3745B-ED11-4E8E-B8A1-20F0F1A02BF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E3745B-ED11-4E8E-B8A1-20F0F1A02BF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E3745B-ED11-4E8E-B8A1-20F0F1A02BF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC0CDC8-6D4D-4D6B-807E-DC7DBD0E599F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC0CDC8-6D4D-4D6B-807E-DC7DBD0E599F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC0CDC8-6D4D-4D6B-807E-DC7DBD0E599F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC0CDC8-6D4D-4D6B-807E-DC7DBD0E599F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9314DC31-6063-4FE3-A5F3-431F9D35C215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9314DC31-6063-4FE3-A5F3-431F9D35C215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9314DC31-6063-4FE3-A5F3-431F9D35C215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9314DC31-6063-4FE3-A5F3-431F9D35C215}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{2FC3C6A7-1E97-4127-8969-BA4C7DEE48C0} = {A2A5F097-F237-4327-BB9D-1573A6C56C0E}
 		{CFF3F57F-2C74-4E80-9C01-A2546717EF56} = {69D35E07-0CFF-4AF9-8796-57088FF4566B}
 		{CD659C35-9970-41D4-8308-0D47684F0579} = {CFF3F57F-2C74-4E80-9C01-A2546717EF56}
 		{55474590-9D48-4C9F-AE5B-57EAA52E6DC8} = {CFF3F57F-2C74-4E80-9C01-A2546717EF56}
@@ -66,6 +79,10 @@ Global
 		{D656A2F4-D73D-47E0-A455-FB7B801F1B71} = {F6BEF160-6CCC-4B88-892B-B507D073D9B1}
 		{F2D90FC4-2ED4-4E7F-A0E6-CC33EC7E1250} = {F6BEF160-6CCC-4B88-892B-B507D073D9B1}
 		{1A9E6152-4478-4732-BD91-9D02A036DE39} = {F6BEF160-6CCC-4B88-892B-B507D073D9B1}
+		{80E3745B-ED11-4E8E-B8A1-20F0F1A02BF2} = {39738F07-C6B8-4D40-831B-0A3481808D94}
+		{39738F07-C6B8-4D40-831B-0A3481808D94} = {A2A5F097-F237-4327-BB9D-1573A6C56C0E}
+		{1CC0CDC8-6D4D-4D6B-807E-DC7DBD0E599F} = {39738F07-C6B8-4D40-831B-0A3481808D94}
+		{9314DC31-6063-4FE3-A5F3-431F9D35C215} = {39738F07-C6B8-4D40-831B-0A3481808D94}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B2C7376B-085E-444D-9848-BD9F43A1246B}
