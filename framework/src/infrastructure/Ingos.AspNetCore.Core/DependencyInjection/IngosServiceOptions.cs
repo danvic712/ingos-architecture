@@ -51,7 +51,7 @@ namespace Ingos.AspNetCore.Core.DependencyInjection
         /// <summary>
         ///     The paths of api comment's xml
         /// </summary>
-        public IList<string> ApiCommentPaths { get; set; }
+        public IList<string> ApiCommentPaths { get; set; } = new List<string>();
     }
 
     /// <summary>
@@ -62,7 +62,7 @@ namespace Ingos.AspNetCore.Core.DependencyInjection
         /// <summary>
         ///     The assemblies contains mapper profiles
         /// </summary>
-        public IList<string> Profiles { get; set; }
+        public IList<string> Profiles { get; set; } = new List<string>();
     }
 
     /// <summary>
@@ -73,7 +73,7 @@ namespace Ingos.AspNetCore.Core.DependencyInjection
         /// <summary>
         ///     The assemblies contains mediators
         /// </summary>
-        public IList<string> Mediators { get; set; }
+        public IList<string> Mediators { get; set; } = new List<string>();
 
         /// <summary>
         ///     Whether to logger behavior info

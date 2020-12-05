@@ -15,14 +15,19 @@ namespace Ingos.AspNetCore.Core.Responses
         #region Properties
 
         /// <summary>
-        ///     Error Title
+        ///     Error Code
         /// </summary>
-        public string Title { get; set; }
+        public string Code { get; set; }
 
         /// <summary>
         ///     Detailed error message
         /// </summary>
         public string Message { get; set; }
+
+        /// <summary>
+        ///     Error stack information
+        /// </summary>
+        public string Stack { get; set; }
 
         #endregion Properties
     }

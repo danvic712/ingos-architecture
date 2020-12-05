@@ -37,13 +37,10 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="setupAction"></param>
         /// <returns></returns>
         public static IServiceCollection AddIngosServices(this IServiceCollection services,
-            Action<IngosServiceOptions> setupAction)
+            Action<IngosServiceOptions> setupAction = null)
         {
-            if (setupAction == null)
-                throw new ArgumentNullException(nameof(setupAction));
-
             var options = new IngosServiceOptions();
-            setupAction.Invoke(options);
+            setupAction?.Invoke(options);
 
             return InjectServiceCore(services, options);
         }
@@ -119,28 +116,37 @@ namespace Microsoft.Extensions.DependencyInjection
             //
             var logger = provider.GetRequiredService<ILogger<StartupBase>>();
             var httpContextAccessor = provider.GetRequiredService<IHttpContextAccessor>();
+            var httpContext = httpContextAccessor.HttpContext;
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.InvalidModelStateResponseFactory = actionContext =>
                 {
+                    var jsonSerializerOptions = new JsonSerializerOptions
+                    {
+                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                        IgnoreNullValues = true,
+                        WriteIndented = true
+                    };
+
                     // Get fields that failed verification
                     //
                     var errors = actionContext.ModelState.Where(e =>
                         e.Value.Errors.Count > 0).Select(e => new ApiResponseErrorMessage
                         {
-                            Title = "Request parameters verification failed",
+                            Code = "InvalidArgument",
                             Message = e.Value.Errors.FirstOrDefault()?.ErrorMessage
                         }).ToList();
 
-                    var result = new ApiResponse<object>
+                    // Error info
+                    var result = JsonSerializer.Serialize(new ApiResponse<object>
                     {
-                        TraceId = httpContextAccessor.HttpContext.TraceIdentifier,
+                        TraceId = httpContext.TraceIdentifier,
                         Status = false,
                         Error = errors
-                    };
+                    }, jsonSerializerOptions);
 
-                    logger.LogError($"Request parameters verification failed: {JsonSerializer.Serialize(result)}");
+                    logger.LogError($"Request parameters verification failed: {result}");
 
                     return new BadRequestObjectResult(result);
                 };
@@ -261,9 +267,9 @@ namespace Microsoft.Extensions.DependencyInjection
             });
 
             services.AddApiVersionService()
-                .AddAutoMapperService(options.AutoMapperOptions)
-                .AddCustomInvalidModelState()
                 .AddHttpContextAccessor()
+                .AddCustomInvalidModelState()
+                .AddAutoMapperService(options.AutoMapperOptions)
                 .AddMediatRService(options.MediatROptions)
                 .AddSwaggerService(options.SwaggerOptions);
 

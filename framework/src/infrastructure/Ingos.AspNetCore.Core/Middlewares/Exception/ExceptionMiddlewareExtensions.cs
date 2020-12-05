@@ -18,11 +18,11 @@ namespace Ingos.AspNetCore.Core.Middlewares.Exception
     public static class ExceptionMiddlewareExtensions
     {
         /// <summary>
-        ///     Use exception middleware
+        ///     Use Ingos's exception middleware
         /// </summary>
         /// <param name="builder">request pipeline.<see cref="IApplicationBuilder" /></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseExceptionHandler(this IApplicationBuilder builder)
+        public static IApplicationBuilder UseIngosExceptionHandler(this IApplicationBuilder builder)
         {
             return builder.UseMiddleware<ExceptionMiddleware>();
         }

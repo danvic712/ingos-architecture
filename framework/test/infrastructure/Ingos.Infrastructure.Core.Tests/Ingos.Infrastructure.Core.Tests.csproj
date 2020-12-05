@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\infrastructure\Ingos.Infrastructure.Core\Ingos.Infrastructure.Core.csproj" />
+    <ProjectReference Include="..\..\..\src\infrastructure\Ingos.Infrastructure.Core\Ingos.Infrastructure.Core.csproj" />
   </ItemGroup>
 
 </Project>

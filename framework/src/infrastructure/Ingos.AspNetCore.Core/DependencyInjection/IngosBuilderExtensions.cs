@@ -9,7 +9,6 @@
 //-----------------------------------------------------------------------
 
 using System.Linq;
-using System.Threading.Tasks;
 using Ingos.AspNetCore.Core.Middlewares.RequestStorage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,7 +21,7 @@ namespace Microsoft.Extensions.DependencyInjection
     /// <summary>
     ///     Injection middleware into application builder
     /// </summary>
-    public static class ApplicationBuilderExtensions
+    public static class IngosBuilderExtensions
     {
         /// <summary>
         ///     Add default middleware into application builder
@@ -34,8 +33,8 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IApplicationBuilder UseIngos(this IApplicationBuilder app, IWebHostEnvironment env,
             IApiVersionDescriptionProvider provider)
         {
-            app.UseExceptionHandler()
-                .UseRequestStorage()
+            app.UseRequestStorage()
+                .UseHealthChecks("/health")
                 .UseSwaggerDocuments(env, provider);
 
             return app;
@@ -63,14 +62,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 // Default load the latest version
                 foreach (var description in provider.ApiVersionDescriptions.Reverse())
                     s.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
-                        $"Template API {description.GroupName.ToLowerInvariant()}");
-            });
-
-            // Redirect to swagger page
-            app.Run(context =>
-            {
-                context.Response.Redirect("/swagger");
-                return Task.CompletedTask;
+                        $"Ingos.Business API {description.GroupName.ToLowerInvariant()}");
             });
 
             return app;

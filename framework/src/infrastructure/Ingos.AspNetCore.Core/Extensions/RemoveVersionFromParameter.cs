@@ -24,7 +24,8 @@ namespace Ingos.AspNetCore.Core.Extensions
         /// </summary>
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
-            var versionParameter = operation.Parameters.FirstOrDefault(p => p.Name == "version");
+            var versionParameter =
+                operation.Parameters.FirstOrDefault(p => p.Name.Equals("version") || p.Name.Equals("api-version"));
             operation.Parameters.Remove(versionParameter);
         }
     }

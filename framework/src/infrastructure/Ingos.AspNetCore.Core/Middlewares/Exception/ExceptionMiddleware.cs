@@ -83,7 +83,11 @@ namespace Ingos.AspNetCore.Core.Middlewares.Exception
                 ? StatusCodes.Status200OK
                 : StatusCodes.Status500InternalServerError;
 
-            var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                IgnoreNullValues = true
+            };
 
             // Error info
             var result = JsonSerializer.Serialize(new ApiResponse<object>
@@ -94,10 +98,11 @@ namespace Ingos.AspNetCore.Core.Middlewares.Exception
                 {
                     new ApiResponseErrorMessage
                     {
-                        Title = "Request has an unhandled exception",
+                        Code = "InternalError",
                         Message = exception.InnerException == null
                             ? exception.Message
-                            : exception.InnerException.Message
+                            : exception.InnerException.Message,
+                        Stack = exception.StackTrace
                     }
                 }
             }, options);
