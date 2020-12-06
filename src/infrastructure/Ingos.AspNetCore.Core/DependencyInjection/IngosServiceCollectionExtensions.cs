@@ -19,11 +19,9 @@ using Ingos.AspNetCore.Core.DependencyInjection;
 using Ingos.AspNetCore.Core.Extensions;
 using Ingos.AspNetCore.Core.Responses;
 using MediatR;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.Extensions.Logging;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
@@ -114,7 +112,6 @@ namespace Microsoft.Extensions.DependencyInjection
 
             // Use service location get log and http instance
             //
-            var logger = provider.GetRequiredService<ILogger<StartupBase>>();
             var httpContextAccessor = provider.GetRequiredService<IHttpContextAccessor>();
             var httpContext = httpContextAccessor.HttpContext;
 
@@ -145,8 +142,6 @@ namespace Microsoft.Extensions.DependencyInjection
                         Status = false,
                         Error = errors
                     }, jsonSerializerOptions);
-
-                    logger.LogError($"Request parameters verification failed: {result}");
 
                     return new BadRequestObjectResult(result);
                 };

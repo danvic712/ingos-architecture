@@ -15,7 +15,6 @@ using System.Threading.Tasks;
 using Ingos.AspNetCore.Core.Responses;
 using Ingos.Infrastructure.Core.Exceptions;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 
 namespace Ingos.AspNetCore.Core.Middlewares.Exception
 {
@@ -27,11 +26,6 @@ namespace Ingos.AspNetCore.Core.Middlewares.Exception
         #region Initialize
 
         /// <summary>
-        ///     Log instance
-        /// </summary>
-        private readonly ILogger _logger;
-
-        /// <summary>
         ///     Http request delegate
         /// </summary>
         private readonly RequestDelegate _request;
@@ -39,11 +33,9 @@ namespace Ingos.AspNetCore.Core.Middlewares.Exception
         /// <summary>
         ///     ctor
         /// </summary>
-        /// <param name="logger">Log instance</param>
         /// <param name="request">Http request delegate</param>
-        public ExceptionMiddleware(ILogger<ExceptionMiddleware> logger, RequestDelegate request)
+        public ExceptionMiddleware(RequestDelegate request)
         {
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _request = request ?? throw new ArgumentNullException(nameof(request));
         }
 
@@ -74,7 +66,7 @@ namespace Ingos.AspNetCore.Core.Middlewares.Exception
         /// <param name="httpContext">Http context</param>
         /// <param name="exception">Error message</param>
         /// <returns></returns>
-        private async Task HandleExceptionAsync(HttpContext httpContext, System.Exception exception)
+        private static async Task HandleExceptionAsync(HttpContext httpContext, System.Exception exception)
         {
             httpContext.Response.ContentType = "application/json";
 
@@ -102,12 +94,10 @@ namespace Ingos.AspNetCore.Core.Middlewares.Exception
                         Message = exception.InnerException == null
                             ? exception.Message
                             : exception.InnerException.Message,
-                        Stack = exception.StackTrace
+                        Stack = exception.StackTrace?.Trim()
                     }
                 }
             }, options);
-
-            _logger.LogError($"API request failed：{result}");
 
             await httpContext.Response.WriteAsync(result);
         }

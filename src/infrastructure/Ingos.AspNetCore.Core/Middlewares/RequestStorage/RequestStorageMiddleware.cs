@@ -56,11 +56,8 @@ namespace Ingos.AspNetCore.Core.Middlewares.RequestStorage
         /// <returns></returns>
         public async Task InvokeAsync(HttpContext context)
         {
-            // Log request info
-            //
+            // Get request info
             var request = await FormatRequestAsync(context.Request);
-            _logger.LogInformation(
-                $"TraceId={context.TraceIdentifier},Path={context.Request.Path},QueryString={context.Request.QueryString},Body={request}");
 
             // Get response body info
             //
@@ -79,7 +76,8 @@ namespace Ingos.AspNetCore.Core.Middlewares.RequestStorage
             //
             var response = await FormatResponseAsync(context.Response);
             _logger.LogInformation(
-                $"TraceId={context.TraceIdentifier},Cost={sp.ElapsedMilliseconds}ms,Response={response}");
+                $"TraceId={context.TraceIdentifier},Scheme={context.Request.Scheme},Host={context.Request.Host},Path={context.Request.Path}" +
+                $",QueryString={context.Request.QueryString},Body={request},Cost={sp.ElapsedMilliseconds}ms,Response={response}");
 
             await responseBody.CopyToAsync(originalBodyStream);
         }

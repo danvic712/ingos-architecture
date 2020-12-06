@@ -1,4 +1,3 @@
-using Ingos.AspNetCore.Core.Middlewares.Exception;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -30,17 +29,15 @@ namespace Ingos.AspNetCore.Core.Tests
         {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
-            app.UseIngosExceptionHandler();
-
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-
             app.UseIngos(env, provider);
+
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

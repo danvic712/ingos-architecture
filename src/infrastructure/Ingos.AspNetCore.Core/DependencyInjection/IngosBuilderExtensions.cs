@@ -9,6 +9,7 @@
 //-----------------------------------------------------------------------
 
 using System.Linq;
+using Ingos.AspNetCore.Core.Middlewares.Exception;
 using Ingos.AspNetCore.Core.Middlewares.RequestStorage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,6 +35,7 @@ namespace Microsoft.Extensions.DependencyInjection
             IApiVersionDescriptionProvider provider)
         {
             app.UseRequestStorage()
+                .UseIngosExceptionHandler()
                 .UseHealthChecks("/health")
                 .UseSwaggerDocuments(env, provider);
 
@@ -62,7 +64,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 // Default load the latest version
                 foreach (var description in provider.ApiVersionDescriptions.Reverse())
                     s.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
-                        $"Ingos.Business API {description.GroupName.ToLowerInvariant()}");
+                        $"Ingos Business API {description.GroupName.ToLowerInvariant()}");
             });
 
             return app;
