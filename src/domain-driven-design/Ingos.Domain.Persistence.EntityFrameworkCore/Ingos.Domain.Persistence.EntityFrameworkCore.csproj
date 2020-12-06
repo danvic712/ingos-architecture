@@ -9,7 +9,8 @@
     <PackageTags>domain-driven-design,entity-framework-core</PackageTags>
     <Description>Persist domain data with ef core</Description>
     <Copyright>Copyright (c) 2020 Danvic Wang</Copyright>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>

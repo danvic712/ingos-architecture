@@ -11,7 +11,8 @@
     <PackageTags>entity-framework-core,repository</PackageTags>
     <RepositoryUrl>https://github.com/Lanesra712/ingos-architecture</RepositoryUrl>
     <Description>Extend EF Core to implement repository mode and unit work mode</Description>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>

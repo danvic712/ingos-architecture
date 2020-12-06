@@ -6,13 +6,14 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Company>Danvic Wang</Company>
     <Authors>Danvic Wang</Authors>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Copyright>Copyright (c) 2020 Danvic Wang</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/Lanesra712/ingos-architecture</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>asp-net-core,middleware</PackageTags>
-    <Description>A utils for extend asp.net core</Description>
+    <Description>A utils for extend ASP.NET Core applications</Description>
+    <PackageReleaseNotes>Fix the wrong loading order of middleware</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

@@ -9,9 +9,10 @@
     <RepositoryUrl>https://github.com/Lanesra712/ingos-architecture</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>infrastructure,utils</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Version>0.0.1</Version>
     <Description>Utils for ingos</Description>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
