@@ -10,7 +10,7 @@
 
 using Microsoft.AspNetCore.Builder;
 
-namespace Ingos.AspNetCore.Core.Middlewares.Exception
+namespace Ingos.AspNetCore.Core.Middlewares.ExceptionHandler
 {
     /// <summary>
     ///     Exception middleware extension method

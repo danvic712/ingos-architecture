@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "ServiceCollectionExtensions.cs">
+// <copyright file= "IngosServiceCollectionExtensions.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
@@ -26,7 +26,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class ServiceCollectionExtensions
+    public static class IngosServiceCollectionExtensions
     {
         /// <summary>
         ///     Add default services into services collection

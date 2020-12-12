@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "ApplicationBuilderExtensions.cs">
+// <copyright file= "IngosBuilderExtensions.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
@@ -9,7 +9,7 @@
 //-----------------------------------------------------------------------
 
 using System.Linq;
-using Ingos.AspNetCore.Core.Middlewares.Exception;
+using Ingos.AspNetCore.Core.Middlewares.ExceptionHandler;
 using Ingos.AspNetCore.Core.Middlewares.RequestStorage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -64,7 +64,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 // Default load the latest version
                 foreach (var description in provider.ApiVersionDescriptions.Reverse())
                     s.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
-                        $"Ingos Business API {description.GroupName.ToLowerInvariant()}");
+                        $"{env.ApplicationName} API {description.GroupName.ToLowerInvariant()}");
             });
 
             return app;

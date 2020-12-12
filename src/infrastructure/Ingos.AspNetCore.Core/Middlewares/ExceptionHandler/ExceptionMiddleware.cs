@@ -16,7 +16,7 @@ using Ingos.AspNetCore.Core.Responses;
 using Ingos.Infrastructure.Core.Exceptions;
 using Microsoft.AspNetCore.Http;
 
-namespace Ingos.AspNetCore.Core.Middlewares.Exception
+namespace Ingos.AspNetCore.Core.Middlewares.ExceptionHandler
 {
     /// <summary>
     ///     Exception handle middleware
@@ -54,7 +54,7 @@ namespace Ingos.AspNetCore.Core.Middlewares.Exception
             {
                 await _request(context);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 await HandleExceptionAsync(context, ex);
             }
@@ -66,7 +66,7 @@ namespace Ingos.AspNetCore.Core.Middlewares.Exception
         /// <param name="httpContext">Http context</param>
         /// <param name="exception">Error message</param>
         /// <returns></returns>
-        private static async Task HandleExceptionAsync(HttpContext httpContext, System.Exception exception)
+        private static async Task HandleExceptionAsync(HttpContext httpContext, Exception exception)
         {
             httpContext.Response.ContentType = "application/json";
 
