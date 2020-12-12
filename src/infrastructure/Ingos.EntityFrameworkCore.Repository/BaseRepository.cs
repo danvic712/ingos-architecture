@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "Repository.cs">
+// <copyright file= "BaseRepository.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
@@ -18,7 +18,7 @@ using Ingos.EntityFrameworkCore.Repository.Models;
 
 namespace Ingos.EntityFrameworkCore.Repository
 {
-    public abstract class Repository<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey>
+    public abstract class BaseRepository<TEntity, TPrimaryKey> : IBaseRepository<TEntity, TPrimaryKey>
         where TEntity : EntityBase<TPrimaryKey>
     {
         #region Initializes
@@ -37,7 +37,7 @@ namespace Ingos.EntityFrameworkCore.Repository
         ///     ctor
         /// </summary>
         /// <param name="context">Db context object</param>
-        protected Repository(BaseDbContext context)
+        protected BaseRepository(BaseDbContext context)
         {
             DbContext = context ?? throw new ArgumentNullException(nameof(context));
         }
@@ -45,6 +45,11 @@ namespace Ingos.EntityFrameworkCore.Repository
         #endregion Initializes
 
         #region Services
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         ///     Delete entity by primary key
@@ -124,6 +129,24 @@ namespace Ingos.EntityFrameworkCore.Repository
 
             // Remove this entity
             DbContext.Remove(entity);
+
+            return await Task.FromResult(true);
+        }
+
+        /// <summary>
+        ///     Remove entity
+        /// </summary>
+        /// <param name="entities">The entity collection</param>
+        /// <param name="cancellationToken">Async task cancel token</param>
+        /// <returns> </returns>
+        public async Task<bool> RemoveAsync(IList<TEntity> entities, CancellationToken cancellationToken = default)
+        {
+            // Check whether this entity is null or not
+            if (entities == null || !entities.Any())
+                return false;
+
+            // Remove this entity
+            DbContext.Remove(entities);
 
             return await Task.FromResult(true);
         }

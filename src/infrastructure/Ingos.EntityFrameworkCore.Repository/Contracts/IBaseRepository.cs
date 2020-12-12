@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "IRepository.cs">
+// <copyright file= "IBaseRepository.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
@@ -8,6 +8,7 @@
 // Description: Base generic data access repository interface
 //-----------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,36 +16,17 @@ using Ingos.EntityFrameworkCore.Repository.Models;
 
 namespace Ingos.EntityFrameworkCore.Repository.Contracts
 {
-    public interface IRepository<TEntity, in TPrimaryKey>
-        where TEntity : EntityBase<TPrimaryKey>
+    public interface IBaseRepository : IDisposable
     {
-        #region Initializes
-
         /// <summary>
         ///     Unit of work object
         /// </summary>
         IUnitOfWork UnitOfWork { get; }
+    }
 
-        #endregion Initializes
-
-        #region Services
-
-        /// <summary>
-        ///     Delete entity by primary key
-        /// </summary>
-        /// <param name="id">The primary key of this entity</param>
-        /// <param name="cancellationToken">Async task cancel token</param>
-        /// <returns> </returns>
-        Task<bool> DeleteAsync(TPrimaryKey id, CancellationToken cancellationToken = default);
-
-        /// <summary>
-        ///     Get entity by primary key
-        /// </summary>
-        /// <param name="id">The primary key of this entity</param>
-        /// <param name="cancellationToken">Async task cancel token</param>
-        /// <returns> </returns>
-        Task<TEntity> GetEntityByIdAsync(TPrimaryKey id, CancellationToken cancellationToken = default);
-
+    public interface IBaseRepository<TEntity> : IBaseRepository
+        where TEntity : class
+    {
         /// <summary>
         ///     Insert entity
         /// </summary>
@@ -70,13 +52,39 @@ namespace Ingos.EntityFrameworkCore.Repository.Contracts
         Task<bool> RemoveAsync(TEntity entity, CancellationToken cancellationToken = default);
 
         /// <summary>
+        ///     Remove entity
+        /// </summary>
+        /// <param name="entities">The entity collection</param>
+        /// <param name="cancellationToken">Async task cancel token</param>
+        /// <returns> </returns>
+        Task<bool> RemoveAsync(IList<TEntity> entities, CancellationToken cancellationToken = default);
+
+        /// <summary>
         ///     Update entity
         /// </summary>
         /// <param name="entity">The entity</param>
         /// <param name="cancellationToken">Async task cancel token</param>
         /// <returns> </returns>
         Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
+    }
 
-        #endregion Services
+    public interface IBaseRepository<TEntity, in TPrimaryKey> : IBaseRepository<TEntity>
+        where TEntity : EntityBase<TPrimaryKey>
+    {
+        /// <summary>
+        ///     Get entity by primary key
+        /// </summary>
+        /// <param name="id">The primary key of this entity</param>
+        /// <param name="cancellationToken">Async task cancel token</param>
+        /// <returns> </returns>
+        Task<TEntity> GetEntityByIdAsync(TPrimaryKey id, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        ///     Delete entity by primary key
+        /// </summary>
+        /// <param name="id">The primary key of this entity</param>
+        /// <param name="cancellationToken">Async task cancel token</param>
+        /// <returns> </returns>
+        Task<bool> DeleteAsync(TPrimaryKey id, CancellationToken cancellationToken = default);
     }
 }
