@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file= "BaseDbContext.cs">
+// <copyright file= "IngosDbContext.cs">
 //     Copyright (c) Danvic.Wang All rights reserved.
 // </copyright>
 // Author: Danvic.Wang
@@ -10,27 +10,36 @@
 
 using System.Threading;
 using System.Threading.Tasks;
+using Ingos.EntityFrameworkCore.Repository.ChangeTracking;
 using Ingos.EntityFrameworkCore.Repository.Contracts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Ingos.EntityFrameworkCore.Repository
 {
-    public class BaseDbContext : DbContext, IUnitOfWork
+    public class IngosDbContext : DbContext, IUnitOfWork
     {
-        #region Initializes
+        /// <summary>
+        ///     Logger factory instance
+        /// </summary>
+        public static readonly ILoggerFactory EFCoreLoggerFactory = LoggerFactory.Create(builder =>
+        {
+            builder.AddFilter((category, level) =>
+                    category == DbLoggerCategory.Database.Command.Name
+                    && level == LogLevel.Information)
+                .AddConsole();
+        });
 
         /// <summary>
         ///     ctor
         /// </summary>
         /// <param name="options">Db context options</param>
-        public BaseDbContext(DbContextOptions<BaseDbContext> options)
+        public IngosDbContext(DbContextOptions<IngosDbContext> options)
             : base(options)
         {
         }
 
-        #endregion Initializes
-
-        #region Unit of work
+        public DbSet<Audit> Audits { get; set; }
 
         /// <summary>
         ///     Commit transaction and returns whether this operation is successful
@@ -45,6 +54,9 @@ namespace Ingos.EntityFrameworkCore.Repository
             return true;
         }
 
-        #endregion Unit of work
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLoggerFactory(EFCoreLoggerFactory);
+        }
     }
 }

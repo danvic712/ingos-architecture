@@ -14,19 +14,18 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Ingos.EntityFrameworkCore.Repository.Contracts;
-using Ingos.EntityFrameworkCore.Repository.Models;
 
 namespace Ingos.EntityFrameworkCore.Repository
 {
     public abstract class BaseRepository<TEntity, TPrimaryKey> : IBaseRepository<TEntity, TPrimaryKey>
-        where TEntity : EntityBase<TPrimaryKey>
+        where TEntity : class
     {
         #region Initializes
 
         /// <summary>
         ///     Db context object
         /// </summary>
-        protected virtual BaseDbContext DbContext { get; set; }
+        protected virtual IngosDbContext DbContext { get; set; }
 
         /// <summary>
         ///     Unit of work object
@@ -37,7 +36,7 @@ namespace Ingos.EntityFrameworkCore.Repository
         ///     ctor
         /// </summary>
         /// <param name="context">Db context object</param>
-        protected BaseRepository(BaseDbContext context)
+        protected BaseRepository(IngosDbContext context)
         {
             DbContext = context ?? throw new ArgumentNullException(nameof(context));
         }
@@ -45,11 +44,6 @@ namespace Ingos.EntityFrameworkCore.Repository
         #endregion Initializes
 
         #region Services
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
 
         /// <summary>
         ///     Delete entity by primary key
@@ -164,5 +158,13 @@ namespace Ingos.EntityFrameworkCore.Repository
         }
 
         #endregion Services
+    }
+
+    public abstract class BaseRepository<TEntity> : BaseRepository<TEntity, Guid>
+        where TEntity : class
+    {
+        protected BaseRepository(IngosDbContext context) : base(context)
+        {
+        }
     }
 }

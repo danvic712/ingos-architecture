@@ -8,15 +8,13 @@
 // Description: Base generic data access repository interface
 //-----------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Ingos.EntityFrameworkCore.Repository.Models;
 
 namespace Ingos.EntityFrameworkCore.Repository.Contracts
 {
-    public interface IBaseRepository : IDisposable
+    public interface IBaseRepository
     {
         /// <summary>
         ///     Unit of work object
@@ -69,7 +67,7 @@ namespace Ingos.EntityFrameworkCore.Repository.Contracts
     }
 
     public interface IBaseRepository<TEntity, in TPrimaryKey> : IBaseRepository<TEntity>
-        where TEntity : EntityBase<TPrimaryKey>
+        where TEntity : class
     {
         /// <summary>
         ///     Get entity by primary key
