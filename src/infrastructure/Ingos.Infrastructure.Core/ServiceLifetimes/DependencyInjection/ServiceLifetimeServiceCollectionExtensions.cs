@@ -9,11 +9,7 @@
 //-----------------------------------------------------------------------
 
 using System;
-using System.Linq;
-using Ingos.Infrastructure.Core.ServiceLifetimes;
 using Ingos.Infrastructure.Core.ServiceLifetimes.Contracts;
-using Ingos.Infrastructure.Core.ServiceLifetimes.Exceptions;
-using Microsoft.Extensions.DependencyInjection;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
@@ -24,66 +20,29 @@ namespace Microsoft.Extensions.DependencyInjection
         ///     Dependency inject custom service
         /// </summary>
         /// <param name="services">The instance of <see cref="IServiceCollection" /></param>
-        /// <param name="setupAction">The inject service's config options</param>
         /// <returns></returns>
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services,
-            Action<ApplicationServiceOptions> setupAction)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            if (setupAction == null)
-                throw new ArgumentNullException(nameof(setupAction));
+            // Get all assemblies
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
 
-            var options = new ApplicationServiceOptions();
-            setupAction.Invoke(options);
-
-            return InjectServiceCore(services, options);
-        }
-
-        /// <summary>
-        ///     Core method of inject service
-        /// </summary>
-        /// <param name="services">The services collection</param>
-        /// <param name="options">The inject service's config options</param>
-        /// <returns></returns>
-        private static IServiceCollection InjectServiceCore(IServiceCollection services,
-            ApplicationServiceOptions options)
-        {
-            if (options == null)
-                throw new ArgumentNullException(nameof(options));
-
-            if (!options.Assembly.Any())
-                return services;
-
-            var transient = typeof(ITransient);
-            var scoped = typeof(IScoped);
-            var singleton = typeof(ISingleton);
-
-            foreach (var assembly in options.Assembly)
-                foreach (var implement in assembly.GetTypes())
-                {
-                    var interfaceType = implement.GetInterfaces();
-
-                    var lifetime = interfaceType
-                        .FirstOrDefault(i => i == transient || i == scoped || i == singleton);
-
-                    if (lifetime == null)
-                        throw new ServiceLifetimeException($"Did not find this {nameof(implement)}'s lifetime");
-
-                    foreach (var service in interfaceType)
-                        switch (lifetime.Name)
-                        {
-                            case "ITransient":
-                                services.AddTransient(service, implement);
-                                break;
-
-                            case "IScoped":
-                                services.AddScoped(service, implement);
-                                break;
-
-                            case "ISingleton":
-                                services.AddSingleton(service, implement);
-                                break;
-                        }
-                }
+            services.Scan(scan => scan.FromAssemblies(assemblies)
+                .AddClasses(classes
+                    => classes.AssignableTo<ITransientService>()
+                )
+                .AsImplementedInterfaces()
+                .WithTransientLifetime()
+                .AddClasses(classes
+                    => classes.AssignableTo<IScopedService>()
+                )
+                .As<IScopedService>()
+                .WithScopedLifetime()
+                .AddClasses(classes
+                    => classes.AssignableTo<ISingletonService>()
+                )
+                .As<ISingletonService>()
+                .WithSingletonLifetime()
+            );
 
             return services;
         }
